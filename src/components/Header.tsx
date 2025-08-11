@@ -2,6 +2,7 @@ import { Menu, Phone, MessageCircle, ChevronDown, Search, MapPin, FileText } fro
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import TestDriveDialog from "@/components/TestDriveDialog";
 
 
 const navItems = [
@@ -50,7 +51,7 @@ export default function Header() {
           >
             <MessageCircle className="h-4 w-4 text-primary" /> WhatsApp
           </a>
-          <Button variant="hero">Book Test Drive</Button>
+          <TestDriveDialog trigger={<Button variant="hero">Book Test Drive</Button>} />
         </div>
 
         <div className="md:hidden">
@@ -67,7 +68,7 @@ export default function Header() {
                     {item.label}
                   </a>
                 ))}
-                <Button className="mt-4" variant="hero">Book Test Drive</Button>
+                <TestDriveDialog trigger={<Button className="mt-4" variant="hero">Book Test Drive</Button>} />
               </div>
             </SheetContent>
           </Sheet>

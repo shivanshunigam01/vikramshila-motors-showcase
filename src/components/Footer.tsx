@@ -1,5 +1,6 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { toast } from "@/hooks/use-toast";
 
 export default function Footer() {
   return (
@@ -28,10 +29,16 @@ export default function Footer() {
         <div>
           <h4 className="text-lg font-medium">Newsletter</h4>
           <p className="mt-2 text-sm text-primary-foreground/80">Get updates on new launches and offers.</p>
-          <div className="mt-4 flex gap-2">
-            <Input placeholder="Your email address" />
-            <Button variant="accent">Subscribe</Button>
-          </div>
+          <form
+            className="mt-4 flex gap-2"
+            onSubmit={(e) => {
+              e.preventDefault();
+              toast({ title: "Subscribed", description: "You will receive our latest updates." });
+            }}
+          >
+            <Input type="email" placeholder="Your email address" required />
+            <Button type="submit" variant="accent">Subscribe</Button>
+          </form>
           <div className="mt-6 text-sm">Follow us: <a className="story-link" href="#">Facebook</a> · <a className="story-link" href="#">Instagram</a> · <a className="story-link" href="#">YouTube</a></div>
         </div>
       </div>

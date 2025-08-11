@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Car, Gauge } from "lucide-react";
+import { toast } from "@/hooks/use-toast";
 
 export default function FloatingCTAs() {
   return (
@@ -15,7 +16,7 @@ export default function FloatingCTAs() {
           <DialogHeader>
             <DialogTitle>Book a Test Drive</DialogTitle>
           </DialogHeader>
-          <form className="grid gap-3">
+          <form className="grid gap-3" onSubmit={(e) => { e.preventDefault(); toast({ title: "Request received", description: "Our team will contact you shortly." }); }}>
             <input className="rounded-md border px-3 py-2" placeholder="Your Name" required />
             <input className="rounded-md border px-3 py-2" placeholder="Phone Number" required />
             <input className="rounded-md border px-3 py-2" placeholder="Preferred Vehicle" />

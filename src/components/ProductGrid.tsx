@@ -2,6 +2,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { productCategories, vehicles, formatINR } from "@/data/vehicles";
+import TestDriveDialog from "@/components/TestDriveDialog";
 
 export default function ProductGrid() {
   return (
@@ -26,11 +27,25 @@ export default function ProductGrid() {
               </CardContent>
               <CardFooter className="flex-col items-stretch gap-2">
                 <div className="flex gap-2">
-                  <Button className="flex-1" variant="hero">Book Test Drive</Button>
-                  <Button className="flex-1" variant="accent">Book This Vehicle</Button>
+                  <TestDriveDialog
+                    trigger={<Button className="flex-1" variant="hero">Book Test Drive</Button>}
+                    vehicleName={cat.name}
+                  />
+                  <a
+                    className="flex-1"
+                    href={`https://wa.me/?text=${encodeURIComponent(`Hello Vikramshila Automobiles, I want to book ${cat.name}.`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button className="w-full" variant="accent">Book This Vehicle</Button>
+                  </a>
                 </div>
-                <Link to={`/vehicles/${(cat.key).replace(/\s+/g, '-').toLowerCase()}`}
-                  className="story-link text-sm">View Details</Link>
+                <Link
+                  to={`/vehicles/${(vehicles.find(v => v.category === cat.name)?.slug) || vehicles[0].slug}`}
+                  className="story-link text-sm"
+                >
+                  View Details
+                </Link>
               </CardFooter>
             </Card>
           ))}
@@ -51,8 +66,18 @@ export default function ProductGrid() {
               </CardContent>
               <CardFooter className="flex-col items-stretch gap-2">
                 <div className="flex gap-2">
-                  <Button className="flex-1" variant="hero">Book Test Drive</Button>
-                  <Button className="flex-1" variant="accent">Book This Vehicle</Button>
+                  <TestDriveDialog
+                    trigger={<Button className="flex-1" variant="hero">Book Test Drive</Button>}
+                    vehicleName={v.name}
+                  />
+                  <a
+                    className="flex-1"
+                    href={`https://wa.me/?text=${encodeURIComponent(`Hello Vikramshila Automobiles, I want to book ${v.name}.`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button className="w-full" variant="accent">Book This Vehicle</Button>
+                  </a>
                 </div>
                 <Link to={`/vehicles/${v.slug}`} className="story-link text-sm">View Details</Link>
               </CardFooter>

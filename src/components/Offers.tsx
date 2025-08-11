@@ -33,7 +33,15 @@ export default function Offers() {
                   <p className="text-muted-foreground mt-1">{o.desc}</p>
                   <p className="mt-4 text-sm">Valid till: {new Date(o.expires).toLocaleDateString()}</p>
                   <div className="mt-6">
-                    <Button variant="accent">Claim This Offer</Button>
+                    <Button
+                      variant="accent"
+                      onClick={() => {
+                        const msg = encodeURIComponent(`Hello Vikramshila Automobiles, I want to claim the offer: ${o.title}.`);
+                        window.open(`https://wa.me/?text=${msg}`, "_blank");
+                      }}
+                    >
+                      Claim This Offer
+                    </Button>
                   </div>
                 </div>
               </CarouselItem>

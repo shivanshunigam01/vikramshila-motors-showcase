@@ -6,6 +6,7 @@ import FinanceCalculator from "@/components/FinanceCalculator";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import TestDriveDialog from "@/components/TestDriveDialog";
 
 export default function VehicleDetails() {
   const { slug } = useParams();
@@ -18,6 +19,10 @@ export default function VehicleDetails() {
       </div>
     );
   }
+
+  const brochureUrl = "/brochures/vikramshila-brochure.pdf";
+  const priceListUrl = "/price-lists/vikramshila-price-list.pdf";
+  const waBookNow = `https://wa.me/?text=${encodeURIComponent(`Hello Vikramshila Automobiles, I want to book the ${vehicle.name}.`)}`;
 
   return (
     <div className="min-h-screen bg-background">
@@ -33,9 +38,13 @@ export default function VehicleDetails() {
                   <h1 className="text-3xl md:text-5xl font-semibold">{vehicle.name}</h1>
                   <p className="mt-2 text-muted-foreground max-w-2xl">{vehicle.description}</p>
                   <div className="mt-4 flex flex-wrap gap-3">
-                    <Button variant="hero">Book Test Drive</Button>
-                    <Button variant="accent">Book Now</Button>
-                    <Button variant="outline">Download Brochure</Button>
+                    <TestDriveDialog trigger={<Button variant="hero">Book Test Drive</Button>} vehicleName={vehicle.name} />
+                    <a href={waBookNow} target="_blank" rel="noopener noreferrer">
+                      <Button variant="accent">Book Now</Button>
+                    </a>
+                    <a href={brochureUrl} download target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline">Download Brochure</Button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -103,9 +112,13 @@ export default function VehicleDetails() {
                   <div className="text-sm text-muted-foreground">Starting at</div>
                   <div className="text-3xl font-semibold">{formatINR(vehicle.price)}</div>
                   <div className="mt-4 flex flex-col gap-2">
-                    <Button variant="hero">Book Test Drive</Button>
-                    <Button variant="accent">Book Now</Button>
-                    <Button variant="outline">Download Price List</Button>
+                    <TestDriveDialog trigger={<Button variant="hero">Book Test Drive</Button>} vehicleName={vehicle.name} />
+                    <a href={waBookNow} target="_blank" rel="noopener noreferrer">
+                      <Button variant="accent">Book Now</Button>
+                    </a>
+                    <a href={priceListUrl} download target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline">Download Price List</Button>
+                    </a>
                   </div>
                 </div>
 
@@ -122,7 +135,7 @@ export default function VehicleDetails() {
                     })()}
                   </div>
                   <div className="mt-4">
-                    <Button variant="accent">Apply for Finance</Button>
+                    <Button variant="accent" onClick={() => document.getElementById('finance')?.scrollIntoView({ behavior: 'smooth' })}>Apply for Finance</Button>
                   </div>
                 </div>
               </aside>
@@ -134,8 +147,10 @@ export default function VehicleDetails() {
 
       <div className="fixed inset-x-0 bottom-0 z-40 border-t bg-background/95 backdrop-blur p-3 md:hidden">
         <div className="container mx-auto flex gap-3">
-          <Button className="flex-1" variant="hero">Book Test Drive</Button>
-          <Button className="flex-1" variant="accent">Book Now</Button>
+          <TestDriveDialog trigger={<Button className="flex-1" variant="hero">Book Test Drive</Button>} vehicleName={vehicle.name} />
+          <a className="flex-1" href={waBookNow} target="_blank" rel="noopener noreferrer">
+            <Button className="w-full" variant="accent">Book Now</Button>
+          </a>
         </div>
       </div>
     </div>
