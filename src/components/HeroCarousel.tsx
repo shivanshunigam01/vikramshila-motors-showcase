@@ -51,7 +51,9 @@ export default function HeroCarousel() {
                       <div className="mt-6 flex flex-wrap gap-3">
                         <Button variant="hero">Book Test Drive</Button>
                         <Button variant="accent">View Current Offers</Button>
-                        <Button variant="outline">Download Brochure</Button>
+                        <Button className="bg-sky-400 text-black hover:bg-yellow-400 transition-colors">
+                          Download Brochure
+                        </Button>
                       </div>
                     </div>
                   </div>
