@@ -1,7 +1,8 @@
-import { Menu, Phone, MessageCircle, ChevronDown } from "lucide-react";
+import { Menu, Phone, MessageCircle, ChevronDown, Search, MapPin, FileText } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+
 
 const navItems = [
   { label: "Home", href: "#home" },

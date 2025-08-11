@@ -31,7 +31,7 @@ export default function HeroCarousel() {
                     loading="eager"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/10 to-transparent" />
-                  <div className="relative z-10 flex h-full items-center px-6 md:px-12">
+                  <div className="relative z-10 flex h-full items-center px-6 md:px-12 text-primary-foreground">
                     <div className="max-w-2xl animate-enter" data-sr="fade-up">
                       <h1 className="text-3xl md:text-5xl font-semibold leading-tight">
                         Premium Commercial Vehicles for Every Business
