@@ -1,4 +1,10 @@
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { heroImages } from "@/data/vehicles";
 import { useEffect, useState } from "react";
@@ -26,7 +32,9 @@ export default function HeroCarousel() {
                 <div className="relative h-[56vw] max-h-[520px] w-full overflow-hidden rounded-none md:rounded-lg">
                   <img
                     src={src}
-                    alt={`Hero banner ${idx + 1} showcasing commercial vehicles`}
+                    alt={`Hero banner ${
+                      idx + 1
+                    } showcasing commercial vehicles`}
                     className="absolute inset-0 h-full w-full object-cover"
                     loading="eager"
                   />
@@ -37,7 +45,8 @@ export default function HeroCarousel() {
                         Premium Commercial Vehicles for Every Business
                       </h1>
                       <p className="mt-3 text-muted-foreground md:text-lg">
-                        Explore SCV, Pickup, LCV, ICV, MCV, Winger and Buses — engineered for performance and profitability.
+                        Explore SCV, Pickup, LCV, ICV, MCV, Winger and Buses —
+                        engineered for performance and profitability.
                       </p>
                       <div className="mt-6 flex flex-wrap gap-3">
                         <Button variant="hero">Book Test Drive</Button>
